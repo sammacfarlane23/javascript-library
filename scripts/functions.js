@@ -6,30 +6,35 @@ function Book(title, author, numberOfPages, haveRead) {
     this.numberOfPages = numberOfPages;
     this.haveRead = haveRead;
     this.id = uuidv4();
-}
+};
+
+const retrieveLibrary = () => {};
 
 const addBookToLibrary = (book) => {
     myLibrary.push(book);
-}
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+};
 
 const displayBooks = () => {
     const bookshelf = document.querySelector('#bookshelf')
     bookshelf.innerHTML = '';
+    myLibrary = JSON.parse(localStorage.getItem('library'));
+    console.log(myLibrary);
     myLibrary.forEach((book) => {
         const bookCard = generateBookDOM(book);
         bookshelf.appendChild(bookCard);
     });
-}
+};
 
 const showForm = () => {
     newBookButton.style.display = 'none';
     newBookForm.style.display = 'flex';
-}
+};
 
 const hideForm = () => {
     newBookForm.style.display = 'none';
     newBookButton.style.display = 'inline';
-}
+};
 
 const addNewBook = (e) => {
     const title = e.target.elements.title.value;
@@ -73,6 +78,11 @@ const generateBookDOM = (book) => {
     haveReadCheckbox.type = 'checkbox';
     haveReadCheckbox.classList.add('have-read__checkbox');
     haveReadCheckbox.checked = book.haveRead;
+    haveReadCheckbox.addEventListener('change', () => {
+        book.haveRead = !book.haveRead;
+        haveReadCheckbox.checked = book.haveRead;
+        haveReadText.textContent = book.haveRead ? 'read' : 'not read';
+    });
     haveReadSection.appendChild(haveReadCheckbox);
 
     const haveReadText = document.createElement('p');

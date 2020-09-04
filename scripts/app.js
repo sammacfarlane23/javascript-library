@@ -7,6 +7,8 @@ addBookToLibrary(theHobbit);
 addBookToLibrary(thePowerOfNow);
 addBookToLibrary(sapiens);
 
+retrieveLibrary();
+
 displayBooks();
 
 const newBookForm = document.querySelector('#new-book-form');
