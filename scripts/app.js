@@ -1,13 +1,10 @@
-let formShowing = false;
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkein', 295, false);
+const theHobbit = new Book('Meditations', 'Marcus Aurelius', 303, false);
 const thePowerOfNow = new Book('The Power of Now: A Guide to Spiritual Enlightenment', 'Eckhart Tolle', 258, true)
 const sapiens = new Book('Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 498, false);
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(thePowerOfNow);
-addBookToLibrary(sapiens);
+const defaultLibrary = [theHobbit, thePowerOfNow, sapiens];
 
-retrieveLibrary();
+let myLibrary = getSavedLibrary();
 
 displayBooks();
 

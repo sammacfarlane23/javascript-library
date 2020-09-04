@@ -1,5 +1,3 @@
-let myLibrary = [];
-
 function Book(title, author, numberOfPages, haveRead) {
     this.title = title;
     this.author = author;
@@ -8,17 +6,29 @@ function Book(title, author, numberOfPages, haveRead) {
     this.id = uuidv4();
 };
 
-const retrieveLibrary = () => {};
+const getSavedLibrary = () => {
+    const library = localStorage.getItem('library');
+
+    try {
+        return library ? JSON.parse(library) : defaultLibrary;
+    } catch (e) {
+        return defaultLibrary;
+    }
+}
+
+const saveLibrary = () => {
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+}
 
 const addBookToLibrary = (book) => {
     myLibrary.push(book);
     localStorage.setItem('library', JSON.stringify(myLibrary));
+    displayBooks();
 };
 
 const displayBooks = () => {
     const bookshelf = document.querySelector('#bookshelf')
     bookshelf.innerHTML = '';
-    myLibrary = JSON.parse(localStorage.getItem('library'));
     console.log(myLibrary);
     myLibrary.forEach((book) => {
         const bookCard = generateBookDOM(book);
@@ -82,6 +92,7 @@ const generateBookDOM = (book) => {
         book.haveRead = !book.haveRead;
         haveReadCheckbox.checked = book.haveRead;
         haveReadText.textContent = book.haveRead ? 'read' : 'not read';
+        saveLibrary();
     });
     haveReadSection.appendChild(haveReadCheckbox);
 
@@ -110,5 +121,6 @@ const removeBook = (id) => {
     myLibrary = myLibrary.filter((book) => {
         return id !== book.id;
     });
+    localStorage.setItem('library', JSON.stringify(myLibrary));
     displayBooks();
 };
