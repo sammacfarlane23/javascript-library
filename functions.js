@@ -1,14 +1,11 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, numberOfPages, haveRead) {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.haveRead = haveRead;
-    this.info = function() {
-        const readMessage = this.haveRead ? 'finished reading' : 'not read yet';
-        return `${this.title} by ${this.author}, ${this.numberOfPages} pages, ${readMessage}`;
-    }
+    this.id = uuidv4();
 }
 
 const addBookToLibrary = (book) => {
@@ -21,7 +18,7 @@ const displayBooks = () => {
     myLibrary.forEach((book) => {
         const bookCard = generateBookDOM(book);
         bookshelf.appendChild(bookCard);
-    })
+    });
 }
 
 const showForm = () => {
@@ -89,9 +86,19 @@ const generateBookDOM = (book) => {
     removeButton.classList.add('book-card__remove');
     removeButton.classList.add('button');
     removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+        removeBook(book.id);
+    })
     bookCard.appendChild(removeButton);
 
     bookCard.classList.add('book-card')
 
     return bookCard;
 }
+
+const removeBook = (id) => {
+    myLibrary = myLibrary.filter((book) => {
+        return id !== book.id;
+    });
+    displayBooks();
+};
