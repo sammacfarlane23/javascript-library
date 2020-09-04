@@ -4,11 +4,45 @@
 
 html,
 body {
+    height: 100%;
     margin: 0;
-    font-family: Helvetica
+    font-family: Helvetica;
+}
+
+:root {
+    --space-cadet: #2b3a67;
+    --dark-electric-blue: #496a81;
+    --orange-web: #ffa400;
+    --alice-blue: #faf6ff;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+}
+
+header {
+    flex: 0 1 auto;
+    background: var(--space-cadet);
+    padding: 1.6rem 0;
+}
+
+.header__text {
+    color: var(--alice-blue);
+    font-size: 3.2rem;
+    margin: 0;
 }
 
 #page {
+    flex: 1 1 auto;
+    background: var(--dark-electric-blue);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +56,7 @@ body {
 }
 
 .book-card {
+    background: var(--alice-blue);
     width: 10rem;
     height: 20rem;
     border: 1px solid #eee;
@@ -43,8 +78,6 @@ body {
     align-items: center;
 }
 
-#new-book-button {}
-
 #new-book-form {
     display: none;
     flex-direction: column;
@@ -57,4 +90,20 @@ body {
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 0.5rem;
+}
+
+.button {
+    background: var(--orange-web);
+    border: none;
+    color: var(--alice-blue);
+    padding: 0.8rem 0.5rem;
+}
+
+#new-book-button {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    border-radius: 2rem;
+    width: 4rem;
+    height: 4rem;
 }

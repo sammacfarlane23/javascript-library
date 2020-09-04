@@ -6,16 +6,23 @@
 </head>
 
 <body>
-    <div id="page">
-        <div id="bookshelf"></div>
-        <button id="new-book-button">New Book +</button>
-        <form id="new-book-form">
-            <input id="book-name" name="title" class="new-book-form__input" type="text" placeholder="Enter the book name...">
-            <input id="book-author" name="author" class="new-book-form__input" type="text" placeholder="Enter the author's name...">
-            <input id="number-of-pages" name="numberOfPages" class="new-book-form__input" type="text" placeholder="Enter the number of pages..."> Have you read this book?<input id="have-read" name="haveRead" type="checkbox">
-            <button>Add Book</button>
-            <button type="button" id="cancel-button">Close</button>
-        </form>
+    <div class="box">
+        <header>
+            <div class="container">
+                <h1 class="header__text">My Library</h1>
+            </div>
+        </header>
+        <div id="page">
+            <div id="bookshelf"></div>
+            <button class="button" id="new-book-button">➕</button>
+            <form id="new-book-form">
+                <input id="book-name" name="title" class="new-book-form__input" type="text" placeholder="Enter the book name...">
+                <input id="book-author" name="author" class="new-book-form__input" type="text" placeholder="Enter the author's name...">
+                <input id="number-of-pages" name="numberOfPages" class="new-book-form__input" type="text" placeholder="Enter the number of pages..."> Have you read this book?<input id="have-read" name="haveRead" type="checkbox">
+                <button class="button">Add Book</button>
+                <button class="button" type="button" id="cancel-button">Close</button>
+            </form>
+        </div>
     </div>
     <script src="scripts/uuidv4.js"></script>
     <script src="scripts/functions.js"></script>
