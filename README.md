@@ -1,0 +1,2 @@
+This is a library app built with HTML, CSS and JavaScript. It allows you to store all your favourite books and 
+whether you've read them or not. Live demo [here](https://sammacfarlane23.github.io/javascript-library/)
